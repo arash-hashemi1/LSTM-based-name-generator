@@ -1,8 +1,7 @@
 import numpy as np
 from model import model
-import random
-import pprint
-import copy
+
+
 
 ## Data load and preprocessing
 
