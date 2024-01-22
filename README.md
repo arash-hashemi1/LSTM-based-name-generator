@@ -1,4 +1,4 @@
-# dinosaur-name-generator
+# LSTM-based-name-generator
 An LSTM-based character-level language model for generating unique dinosaur names!
 
 ---
