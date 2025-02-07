@@ -1,5 +1,5 @@
 # LSTM-based-name-generator
-An LSTM-based character-level language model for generating unique dinosaur names!
+An LSTM-based character-level language model for generating unique company names!
 
 ---
 # How to Run
