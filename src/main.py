@@ -3,9 +3,9 @@ from model import model
 
 
 
-## Data load and preprocessing
+## Data load and preprocessings
 
-data = open('src/data/dinos.txt', 'r').read()
+data = open('src/data/company.txt', 'r').read()
 data= data.lower()
 chars = list(set(data))
 data_size, vocab_size = len(data), len(chars)

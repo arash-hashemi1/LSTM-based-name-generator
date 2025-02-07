@@ -3,9 +3,9 @@ from optimize import optimize
 from sample import sample
 from utils import initialize_parameters, get_initial_loss, smooth, get_sample
 
-def model(data_x, ix_to_char, char_to_ix, num_iterations = 35000, n_a = 50, dino_names = 7, vocab_size = 27, verbose = False):
+def model(data_x, ix_to_char, char_to_ix, num_iterations = 35000, n_a = 50, company_names = 7, vocab_size = 27, verbose = False):
     """
-    Trains the model and generates dinosaur names.
+    Trains the model and generates company names.
 
     Arguments:
     data_x -- text corpus, divided in words
@@ -13,7 +13,7 @@ def model(data_x, ix_to_char, char_to_ix, num_iterations = 35000, n_a = 50, dino
     char_to_ix -- dictionary that maps a character to an index
     num_iterations -- number of iterations to train the model for
     n_a -- number of units of the RNN cell
-    dino_names -- number of dinosaur names you want to sample at each iteration.
+    company_names -- number of company names you want to sample at each iteration.
     vocab_size -- number of unique characters found in the text (size of the vocabulary)
 
     Returns:
@@ -27,12 +27,12 @@ def model(data_x, ix_to_char, char_to_ix, num_iterations = 35000, n_a = 50, dino
     parameters = initialize_parameters(n_a, n_x, n_y)
 
     # Initialize loss (this is required because we want to smooth our loss)
-    loss = get_initial_loss(vocab_size, dino_names)
+    loss = get_initial_loss(vocab_size, company_names)
 
-    # Build list of all dinosaur names (training examples).
+    # Build list of all company names (training examples).
     examples = [x.strip() for x in data_x]
 
-    # Shuffle list of all dinosaur names
+    # Shuffle list of all company names
     np.random.seed(0)
     np.random.shuffle(examples)
 
@@ -40,7 +40,7 @@ def model(data_x, ix_to_char, char_to_ix, num_iterations = 35000, n_a = 50, dino
     a_prev = np.zeros((n_a, 1))
 
     # for grading purposes
-    last_dino_name = "abc"
+    last_company_name = "abc"
 
     # Optimization loop
     for j in range(num_iterations):
@@ -83,17 +83,17 @@ def model(data_x, ix_to_char, char_to_ix, num_iterations = 35000, n_a = 50, dino
 
             print('Iteration: %d, Loss: %f' % (j, loss) + '\n')
 
-            # The number of dinosaur names to print
+            # The number of company names to print
             seed = 0
-            for name in range(dino_names):
+            for name in range(company_names):
 
                 # Sample indices and print them
                 sampled_indices = sample(parameters, char_to_ix, seed)
-                last_dino_name = get_sample(sampled_indices, ix_to_char)
-                print(last_dino_name.replace('\n', ''))
+                last_company_name = get_sample(sampled_indices, ix_to_char)
+                print(last_company_name.replace('\n', ''))
 
                 seed += 1  # To get the same result (for grading purposes), increment the seed by one.
 
             print('\n')
 
-    return parameters, last_dino_name
+    return parameters, last_company_name
