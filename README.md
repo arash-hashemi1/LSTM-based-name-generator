@@ -23,7 +23,6 @@ The **backpropagation algorithm** is implemented manually, including gradient co
 ## ▶️ How to Run  
 
 1. **Clone the repository** and navigate to the project folder:  
-   ```bash
 - git clone https://github.com/your-username/LSTM-based-name-generator.git  
 - cd LSTM-based-name-generator
 - Install the requirements by running `pip install -r requirements.txt`.
